@@ -4,6 +4,7 @@
   "bin": {
     "app": "bin/app.js"
   },
+  "type": "module",
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
@@ -17,7 +18,6 @@
     "@types/pg": "^8.11.8",
     "aws-cdk": "2.155.0",
     "drizzle-kit": "^0.24.2",
-    "ts-node": "^10.9.2",
     "tsx": "^4.19.0",
     "typescript": "~5.5.3"
   },
