@@ -1,5 +1,6 @@
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocument, PutCommand } from '@aws-sdk/lib-dynamodb';
+import { AWS_CUSTOM_RESOURCE_LATEST_SDK_DEFAULT } from 'aws-cdk-lib/cx-api';
 import { Hono } from 'hono'
 import { z } from 'zod'
 
@@ -16,13 +17,13 @@ const ZUser = z.object({
 export type User = z.infer<typeof ZUser>;
 
 const dbClient = new DynamoDBClient({
+    endpoint: 'http://localhost:8000',
     region: 'eu-west-3',
     credentials: {
         accessKeyId: 'dummy',
         secretAccessKey: 'dummy',
-        sessionToken: 'dummy',
     },
-    
+    logger: console,
 });
 const ddbDocClient = DynamoDBDocument.from(dbClient);
 
